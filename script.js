@@ -200,7 +200,7 @@ async function executeInstruction(instruction, labelMap) {
         updateFlags(
           result,
           result > 0xFFFF,  // Carry
-          checkOverflow(op1, value, result, true),  // Overflow
+          checkOverflow(op1, value, result, true) | result > 0xFFFF,  // Overflow
           checkAuxiliaryCarry(op1, value, true)  // Auxiliary Carry
         );
         break;
